@@ -132,23 +132,40 @@ export const pitchStyles = `
   }
   .masthead-sub .hr { height: 1px; background: var(--ink); }
 
-  /* Masthead logo lockup (on dark strip) */
+  /* Masthead wordmark lockup (on dark strip) */
   .brand-strip {
     background: #0a0a0a;
     margin: 18px -48px 0;
-    padding: 48px 48px;
-    display: flex; align-items: center; justify-content: center;
-    gap: 48px;
+    padding: 44px 32px;
+    display: flex; align-items: baseline; justify-content: center;
+    gap: clamp(16px, 3vw, 36px);
     border-top: 2px solid var(--kick);
     border-bottom: 2px solid var(--kick);
+    flex-wrap: wrap;
   }
-  .brand-strip .ft-logo { height: clamp(56px, 9vw, 110px); width: auto; display: block; }
-  .brand-strip .kick-svg { height: clamp(56px, 9vw, 110px); width: auto; display: block; }
+  .brand-strip .ft-wordmark,
+  .brand-strip .kick-wordmark {
+    font-family: "Old Standard TT", serif;
+    font-weight: 700;
+    font-size: clamp(40px, 9vw, 96px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+    display: inline-block;
+  }
+  .brand-strip .ft-wordmark .ft-dot { color: var(--ft-orange); }
+  .brand-strip .kick-wordmark {
+    position: relative;
+    color: #000;
+    background: var(--kick);
+    padding: 0 0.2em 0.02em;
+  }
   .brand-strip .x {
     color: rgba(255,255,255,0.5);
     font-family: "Old Standard TT", serif;
     font-style: italic;
-    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 400;
+    font-size: clamp(28px, 6vw, 64px);
     line-height: 1;
   }
 
@@ -915,24 +932,12 @@ export const pitchStyles = `
     .masthead-sub .hr { display: none; }
     .brand-strip {
       margin: 14px -24px 0;
-      padding: 18px 12px;
-      gap: 12px;
-      flex-wrap: nowrap;
+      padding: 30px 20px;
+      gap: 14px;
     }
-    .brand-strip > * { min-width: 0; flex-shrink: 1; }
-    .brand-strip .ft-logo,
-    .brand-strip .kick-svg {
-      height: auto;
-      width: auto;
-      max-height: clamp(28px, 8vw, 54px);
-      max-width: calc(42% - 18px);
-      object-fit: contain;
-      display: block;
-    }
-    .brand-strip .x {
-      flex: 0 0 auto;
-      font-size: clamp(22px, 6vw, 32px);
-    }
+    .brand-strip .ft-wordmark,
+    .brand-strip .kick-wordmark { font-size: clamp(36px, 11vw, 64px); }
+    .brand-strip .x { font-size: clamp(24px, 7vw, 36px); }
     .ticker { font-size: 10px; height: 28px; }
     .ticker-track { gap: 28px; }
     .venn { grid-template-columns: 1fr; }
@@ -949,13 +954,10 @@ export const pitchStyles = `
   }
 
   @media (max-width: 480px) {
-    .brand-strip { gap: 10px; padding: 14px 10px; }
-    .brand-strip .ft-logo,
-    .brand-strip .kick-svg {
-      max-height: clamp(24px, 7vw, 44px);
-      max-width: calc(42% - 14px);
-    }
-    .brand-strip .x { font-size: clamp(18px, 5vw, 26px); }
+    .brand-strip { gap: 10px; padding: 24px 14px; }
+    .brand-strip .ft-wordmark,
+    .brand-strip .kick-wordmark { font-size: clamp(28px, 10vw, 48px); }
+    .brand-strip .x { font-size: clamp(20px, 6vw, 28px); }
     .masthead-top { font-size: 9px; letter-spacing: 0.04em; }
     .masthead-sub { font-size: 9px; letter-spacing: 0.04em; }
     .stats { grid-template-columns: 1fr; }
