@@ -870,7 +870,7 @@ export const pitchStyles = `
   .space-sm { height: 40px; }
 
   @media (max-width: 960px) {
-    .hero { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; padding: 32px 24px 40px; }
     .hero-lead .twocol { column-count: 1; }
     .stats { grid-template-columns: repeat(2, 1fr); }
     .stat:nth-child(2) { border-right: none; }
@@ -885,8 +885,39 @@ export const pitchStyles = `
     .rm-row { grid-template-columns: 1fr; }
     .rm-row > div { border-right: none; border-bottom: 1px solid var(--ink); }
     .wrap, .wrap-narrow, .masthead, .section-head, .hero, .kick-slab, .blood-slab, footer.colophon { padding-left: 24px; padding-right: 24px; }
-    .brand-strip { margin: 0 -24px; padding: 18px 24px; }
+    .masthead { padding-top: 18px; padding-bottom: 16px; }
+    .masthead-top {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+    .masthead-top > div,
+    .masthead-top > div[style] { text-align: center !important; }
+    .masthead-top .center { flex: none; }
+    .masthead-sub {
+      margin-top: 16px;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      font-size: 10px;
+      text-align: center;
+    }
+    .masthead-sub .hr { display: none; }
+    .brand-strip {
+      margin: 14px -24px 0;
+      padding: 22px 20px;
+      gap: 18px;
+    }
+    .brand-strip .ft-logo,
+    .brand-strip .kick-svg { height: clamp(36px, 14vw, 64px); }
+    .brand-strip .x { font-size: clamp(26px, 8vw, 40px); }
+    .ticker { font-size: 10px; height: 28px; }
+    .ticker-track { gap: 28px; }
     .venn { grid-template-columns: 1fr; }
+    footer.colophon { padding-top: 48px; padding-bottom: 32px; }
     footer.colophon .cols { grid-template-columns: 1fr 1fr; }
     .socials { grid-template-columns: 1fr 1fr; }
     .socials a:nth-child(2n) { border-right: none; }
@@ -894,4 +925,20 @@ export const pitchStyles = `
     .country-cell:nth-child(6n) { border-right: 1px solid var(--ink); }
     .country-cell:nth-child(3n) { border-right: none; }
     .tech-grid { grid-template-columns: 1fr 1fr; }
+    .section-head { padding: 14px 24px; font-size: 10px; }
+    .kick-slab, .blood-slab { padding-top: 64px; padding-bottom: 64px; }
+  }
+
+  @media (max-width: 480px) {
+    .brand-strip { gap: 12px; padding: 18px 16px; }
+    .brand-strip .ft-logo,
+    .brand-strip .kick-svg { height: clamp(32px, 12vw, 52px); }
+    .masthead-top { font-size: 9px; }
+    .stats { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid var(--ink); }
+    .stat:last-child { border-bottom: none; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .globe-grid { grid-template-columns: repeat(2, 1fr); }
+    .country-cell:nth-child(3n) { border-right: 1px solid var(--ink); }
+    .country-cell:nth-child(2n) { border-right: none; }
   }`;
