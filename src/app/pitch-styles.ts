@@ -16,7 +16,7 @@ export const pitchStyles = `
   }
 
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
+  html, body { margin: 0; padding: 0; max-width: 100vw; }
   body {
     background: var(--paper);
     color: var(--ink);
@@ -891,12 +891,17 @@ export const pitchStyles = `
       align-items: stretch;
       gap: 4px;
       font-size: 10px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       padding-bottom: 12px;
       margin-bottom: 12px;
     }
     .masthead-top > div,
-    .masthead-top > div[style] { text-align: center !important; }
+    .masthead-top > div[style] {
+      text-align: center !important;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      max-width: 100%;
+    }
     .masthead-top .center { flex: none; }
     .masthead-sub {
       margin-top: 16px;
@@ -904,16 +909,30 @@ export const pitchStyles = `
       gap: 10px;
       font-size: 10px;
       text-align: center;
+      letter-spacing: 0.06em;
     }
+    .masthead-sub > div { overflow-wrap: anywhere; word-break: break-word; }
     .masthead-sub .hr { display: none; }
     .brand-strip {
       margin: 14px -24px 0;
-      padding: 22px 20px;
-      gap: 18px;
+      padding: 18px 12px;
+      gap: 12px;
+      flex-wrap: nowrap;
     }
+    .brand-strip > * { min-width: 0; flex-shrink: 1; }
     .brand-strip .ft-logo,
-    .brand-strip .kick-svg { height: clamp(36px, 14vw, 64px); }
-    .brand-strip .x { font-size: clamp(26px, 8vw, 40px); }
+    .brand-strip .kick-svg {
+      height: auto;
+      width: auto;
+      max-height: clamp(28px, 8vw, 54px);
+      max-width: calc(42% - 18px);
+      object-fit: contain;
+      display: block;
+    }
+    .brand-strip .x {
+      flex: 0 0 auto;
+      font-size: clamp(22px, 6vw, 32px);
+    }
     .ticker { font-size: 10px; height: 28px; }
     .ticker-track { gap: 28px; }
     .venn { grid-template-columns: 1fr; }
@@ -930,10 +949,15 @@ export const pitchStyles = `
   }
 
   @media (max-width: 480px) {
-    .brand-strip { gap: 12px; padding: 18px 16px; }
+    .brand-strip { gap: 10px; padding: 14px 10px; }
     .brand-strip .ft-logo,
-    .brand-strip .kick-svg { height: clamp(32px, 12vw, 52px); }
-    .masthead-top { font-size: 9px; }
+    .brand-strip .kick-svg {
+      max-height: clamp(24px, 7vw, 44px);
+      max-width: calc(42% - 14px);
+    }
+    .brand-strip .x { font-size: clamp(18px, 5vw, 26px); }
+    .masthead-top { font-size: 9px; letter-spacing: 0.04em; }
+    .masthead-sub { font-size: 9px; letter-spacing: 0.04em; }
     .stats { grid-template-columns: 1fr; }
     .stat { border-right: none; border-bottom: 1px solid var(--ink); }
     .stat:last-child { border-bottom: none; }
