@@ -29,9 +29,9 @@ export const pitchBody = `
   </div>
 
   <div class="brand-strip">
-    <img class="ft-logo" src="assets/fishtank-logo.webp" alt="Fishtank" />
+    <span class="ft-wordmark">fishtank<span class="ft-dot">.</span>live</span>
     <span class="x">×</span>
-    <img class="kick-svg" src="assets/kick-logo.svg" alt="Kick" />
+    <span class="kick-wordmark">kick</span>
   </div>
 
   <div class="masthead-sub">
